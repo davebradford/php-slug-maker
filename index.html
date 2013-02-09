@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+	
+
+<form>
+<label for="title">title</label>
+<input type="text" id="title" />
+
+</form> 
+
+<div id="update"></div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#title").keyup(function () {
+        var firstVal = $("#title").val();
+
+        $.ajax({
+                type: "POST",
+                data: "title="+ firstVal,
+                url: "slug.php",
+                success: function(msg){
+                $("#update").html(msg);
+
+                }
+            });
+        });
+    }); 
+</script>
+
+</body>
+</html>
